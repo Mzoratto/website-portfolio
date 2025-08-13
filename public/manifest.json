@@ -1,0 +1,20 @@
+{
+  "name": "Modern Portfolio - Your Name",
+  "short_name": "Portfolio",
+  "description": "Modern portfolio website showcasing professional work and skills",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "orientation": "portrait-primary",
+  "categories": ["portfolio", "developer", "business"],
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/vite.svg",
+      "sizes": "32x32",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+/* LazyImage Styles */
+.lazy-image {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  background-color: var(--color-surface);
+  border-radius: var(--radius-md);
+}
+
+.lazy-image__picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.lazy-image__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity var(--transition-normal);
+  opacity: 0;
+}
+
+.lazy-image__img--loaded {
+  opacity: 1;
+}
+
+.lazy-image__img--error {
+  opacity: 0;
+}
+
+/* Loading placeholder */
+.lazy-image__placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-surface);
+}
+
+.lazy-image__skeleton {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--color-surface) 25%,
+    var(--color-border) 50%,
+    var(--color-surface) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Error state */
+.lazy-image__error {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-surface);
+  color: var(--color-text-light);
+  padding: var(--spacing-md);
+  text-align: center;
+}
+
+.lazy-image__error-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: var(--spacing-sm);
+  opacity: 0.5;
+}
+
+.lazy-image__error-text {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .lazy-image__error-icon {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .lazy-image__error-text {
+    font-size: 0.75rem;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .lazy-image__img {
+    transition: none;
+  }
+  
+  .lazy-image__skeleton {
+    animation: none;
+    background: var(--color-border);
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .lazy-image {
+    border: 1px solid var(--color-text);
+  }
+  
+  .lazy-image__error {
+    border: 2px solid var(--color-text);
+  }
+}
